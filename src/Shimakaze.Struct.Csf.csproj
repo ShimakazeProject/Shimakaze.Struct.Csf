@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>frg2089</Authors>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://frg2089.github.io/Shimakaze.Struct.Csf/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/frg2089/Shimakaze.Struct.Csf</RepositoryUrl>
+    <Copyright>Copyright (c) Shimakaze.Struct.Csf Contributors</Copyright>
+    <RepositoryType></RepositoryType>
+  </PropertyGroup>
+
+</Project>
