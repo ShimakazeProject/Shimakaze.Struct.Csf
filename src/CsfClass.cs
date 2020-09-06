@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Shimakaze.ToolKit.CSF.Kernel
+namespace Shimakaze.Struct.Csf
 {
     public sealed class CsfClass : List<CsfLabel>
     {

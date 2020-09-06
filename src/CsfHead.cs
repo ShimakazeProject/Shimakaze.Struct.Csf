@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shimakaze.ToolKit.CSF.Kernel
+namespace Shimakaze.Struct.Csf
 {
     public struct CsfHead
     {

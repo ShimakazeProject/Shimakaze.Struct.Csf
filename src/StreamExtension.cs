@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shimakaze.ToolKit.CSF.Kernel
+namespace Shimakaze.Struct.Csf
 {
     internal static class StreamExtension
     {

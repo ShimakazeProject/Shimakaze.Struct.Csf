@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Shimakaze.ToolKit.CSF.Kernel
+namespace Shimakaze.Struct.Csf
 {
     public static class CsfValueHelper
     {
