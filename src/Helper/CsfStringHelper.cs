@@ -24,7 +24,7 @@ namespace Shimakaze.Struct.Csf.Helper
             // 字符串主要内容
             await stream.WriteAsync(Decoding(Encoding.Unicode.GetBytes(value.Content)));
             // 判断是否包含额外内容
-            if (value.IsWString)// 存在额外内容
+            if (value.IsWString)// 存在额外内容1
             {
                 var extra = value as CsfWString;
                 // 额外内容长度
