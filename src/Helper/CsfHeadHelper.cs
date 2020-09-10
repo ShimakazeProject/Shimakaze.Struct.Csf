@@ -55,7 +55,7 @@ namespace Shimakaze.Struct.Csf.Helper
             await stream.WriteAsync(BitConverter.GetBytes(head.LabelCount));
             await stream.WriteAsync(BitConverter.GetBytes(head.StringCount));
             await stream.WriteAsync(BitConverter.GetBytes(head.Unknown));
-            await stream.WriteAsync(BitConverter.GetBytes(head.LabelCount));
+            await stream.WriteAsync(BitConverter.GetBytes(head.Language));
         }
 
     }
