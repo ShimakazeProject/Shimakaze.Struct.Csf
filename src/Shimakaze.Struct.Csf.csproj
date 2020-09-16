@@ -2,14 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>frg2089</Authors>
+    <Authors>Shimakaze.Struct.Csf Contributors</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://frg2089.github.io/Shimakaze.Struct.Csf/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/frg2089/Shimakaze.Struct.Csf</RepositoryUrl>
+    <PackageProjectUrl>https://shimakazeproj.github.io/#/Shimakaze.Sturct.Csf/index.md</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ShimakazeProj/Shimakaze.Struct.Csf</RepositoryUrl>
     <Copyright>Copyright (c) Shimakaze.Struct.Csf Contributors</Copyright>
-    <RepositoryType></RepositoryType>
+    <RepositoryType>public</RepositoryType>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Company>Shimakaze Project</Company>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
