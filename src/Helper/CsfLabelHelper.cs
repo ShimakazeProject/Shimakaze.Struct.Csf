@@ -30,11 +30,25 @@ namespace Shimakaze.Struct.Csf.Helper
         /// <summary>
         /// Deserialize .Net Object to CSF data
         /// </summary>
-        public static async Task<CsfLabel> DeserializeAsync(Stream stream)
+        public static async Task<CsfLabel> DeserializeAsync(Stream stream, int bufferLength = 1024)
         {
-            if (!(await stream.ReadAsync(4)).SequenceEqual(FLAG_RAW)) throw new FormatException("Unknown File Format");
-            var lbl = new CsfLabel { Name = Encoding.ASCII.GetString(await stream.ReadAsync(BitConverter.ToInt32(await stream.ReadAsync(4), 0))) };
-            lbl.Capacity = BitConverter.ToInt32(await stream.ReadAsync(4), 0);
+            var buffer = new byte[bufferLength];
+            await stream.ReadAsync(buffer, 0, 4);
+            if (!buffer.Take(4).SequenceEqual(FLAG_RAW))
+            {
+                var sb = new StringBuilder("Unknown File Format, Flag is : [", 50);
+                for (int i = 0; i < 4; i++)
+                    sb.Append($"{buffer[i]:X}, ");
+                sb.Append("].");
+                throw new FormatException(sb.ToString());
+            }
+            var lbl = new CsfLabel();
+            await stream.ReadAsync(buffer, 0, 4);
+            lbl.Capacity = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, 4);
+            var nameLength = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, nameLength);
+            lbl.Name = Encoding.ASCII.GetString(buffer, 0, nameLength);
             for (int i = 0; i < lbl.Capacity; i++) lbl.Add(await CsfStringHelper.DeserializeAsync(stream));
             return lbl;
         }

@@ -39,14 +39,30 @@ namespace Shimakaze.Struct.Csf.Helper
         /// <summary>
         /// Deserialize .Net Object to CSF data
         /// </summary>
-        public static async Task<CsfString> DeserializeAsync(Stream stream)
+        public static async Task<CsfString> DeserializeAsync(Stream stream, int bufferLength = 1024)
         {
-            var flag = await stream.ReadAsync(4);
-            var data = stream.ReadAsync(BitConverter.ToInt32(await stream.ReadAsync(4), 0) << 1);
+            var buffer = new byte[bufferLength];
+            await stream.ReadAsync(buffer, 0, 4);
+            if (buffer.SequenceEqual(STR_RAW) || buffer.SequenceEqual(WSTR_RAW)) throw new FormatException();
+            var isWStr = buffer.Take(4).SequenceEqual(WSTR_RAW);
+            await stream.ReadAsync(buffer, 0, 4);
+            var valueLength = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, valueLength << 1);
+            var value = Encoding.Unicode.GetString(Decoding(buffer, valueLength << 1), 0, valueLength << 1);
+
             // 判断是否包含额外内容
-            return flag.SequenceEqual(WSTR_RAW)
-                ? Create(Encoding.Unicode.GetString(Decoding(await data)), Encoding.ASCII.GetString(await stream.ReadAsync(BitConverter.ToInt32(await stream.ReadAsync(4), 0))))
-                : Create(Encoding.Unicode.GetString(Decoding(await data)));
+            if (isWStr)
+            {
+                await stream.ReadAsync(buffer, 0, 4);
+                var extraLength = BitConverter.ToInt32(buffer, 0);
+                await stream.ReadAsync(buffer, 0, extraLength);
+                var extra = Encoding.ASCII.GetString(buffer, 0, extraLength);
+                return Create(value, extra);
+            }
+            else
+            {
+                return Create(value);
+            }
         }
 
         /// <summary>
@@ -61,6 +77,27 @@ namespace Shimakaze.Struct.Csf.Helper
             for (int i = 0; i < ValueData.Length; ++i)
                 ValueData[i] = (byte)~ValueData[i];
             return ValueData;
+        }
+        public static byte[] Decoding(byte[] ValueData, int ValueDataLength)
+        {
+            for (int i = 0; i < ValueDataLength; ++i)
+                ValueData[i] = (byte)~ValueData[i];
+            return ValueData;
+        }
+        public static CsfWString ToWString(this CsfString str, string extra = null)
+        {
+            if (str is CsfWString wstr) return wstr;
+            else return new CsfWString()
+            {
+                IsWString = true,
+                Content = str.Content,
+                Extra = extra
+            };
+        }
+        public static CsfString ToNormalString(this CsfString str)
+        {
+            if (str.GetType() == typeof(CsfString)) return str;
+            else return Create(str.Content);
         }
     }
 }

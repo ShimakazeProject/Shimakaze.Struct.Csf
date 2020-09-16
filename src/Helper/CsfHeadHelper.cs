@@ -40,13 +40,20 @@ namespace Shimakaze.Struct.Csf.Helper
         }
         public static async Task<CsfHead> DeserializeAsync(Stream stream)
         {
-            if (!(await stream.ReadAsync(4)).SequenceEqual(CSF_FLAG)) throw new FormatException("Unknown File Format: Unknown Header");
-            return Create(
-                BitConverter.ToInt32(await stream.ReadAsync(4), 0),
-                BitConverter.ToInt32(await stream.ReadAsync(4), 0),
-                BitConverter.ToInt32(await stream.ReadAsync(4), 0),
-                BitConverter.ToInt32(await stream.ReadAsync(4), 0),
-                BitConverter.ToInt32(await stream.ReadAsync(4), 0));
+            var buffer = new byte[4];
+            await stream.ReadAsync(buffer, 0, 4);
+            if (!buffer.SequenceEqual(CSF_FLAG)) throw new FormatException("Unknown File Format: Unknown Header");
+            await stream.ReadAsync(buffer, 0, 4);
+            var version = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, 4);
+            var labelCount = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, 4);
+            var stringCount = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, 4);
+            var unknown = BitConverter.ToInt32(buffer, 0);
+            await stream.ReadAsync(buffer, 0, 4);
+            var lang = BitConverter.ToInt32(buffer, 0);
+            return Create(version, labelCount, stringCount, unknown, lang);
         }
         public static async Task SerializeAsync(this CsfHead head, Stream stream)
         {
