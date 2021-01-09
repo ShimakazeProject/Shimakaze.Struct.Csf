@@ -3,12 +3,12 @@
 
 namespace Shimakaze.Struct.Csf
 {
-
     /// <summary>
     /// CSF文件的标签结构
     /// </summary>
-    public class CsfLabel : List<CsfString>
+    public struct CsfLabel
     {
-        public string Name;
+        public string Label;
+        public List<CsfValue> Values;
     }
 }

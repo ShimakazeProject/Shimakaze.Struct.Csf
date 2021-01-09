@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Company>Shimakaze Project</Company>
+    <Authors>Shimakaze.Struct.Csf Contributors</Authors>
+    <Copyright>Copyright (c) Shimakaze.Struct.Csf Contributors</Copyright>
+    <RepositoryUrl>https://github.com/ShimakazeProj/Shimakaze.Struct.Csf</RepositoryUrl>
+    <RepositoryType>public</RepositoryType>
+    <PackageProjectUrl>https://shimakazeproj.github.io/docs/#/Shimakaze.Struct.Csf.Json/index.md</PackageProjectUrl>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Shimakaze.Struct.Csf" Version="1.0.2" />
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
+  </ItemGroup>
+
+</Project>

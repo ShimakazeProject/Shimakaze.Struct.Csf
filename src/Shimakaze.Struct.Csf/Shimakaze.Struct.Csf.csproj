@@ -6,14 +6,20 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://shimakazeproj.github.io/#/Shimakaze.Sturct.Csf/index.md</PackageProjectUrl>
+    <PackageProjectUrl>https://shimakazeproj.github.io/docs/#/Shimakaze.Struct.Csf/index.md</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ShimakazeProj/Shimakaze.Struct.Csf</RepositoryUrl>
     <Copyright>Copyright (c) Shimakaze.Struct.Csf Contributors</Copyright>
     <RepositoryType>public</RepositoryType>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
     <Company>Shimakaze Project</Company>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
 </Project>

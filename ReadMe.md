@@ -1,6 +1,7 @@
 <div align="center">
 
 # Shimakaze.Struct.Csf
+
 为CNC系列的CSF提供简单数据结构  
 可以更加方便的用这个处理CSF文件  
 
@@ -18,5 +19,15 @@
 ![GitHub watchers](https://img.shields.io/github/watchers/frg2089/Shimakaze.Struct.Csf?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/frg2089/Shimakaze.Struct.Csf?color=%230F0&style=flat-square)
 ![GitHub All Releases](https://img.shields.io/github/downloads/frg2089/Shimakaze.Struct.Csf/total?color=%2309F&style=flat-square)
+
+</div>
+<div align="center">
+
+# Shimakaze.Struct.Csf.Json
+
+`Shimakaze.Struct.Csf`的Json扩展包
+
+[![Nuget](https://img.shields.io/nuget/v/Shimakaze.Struct.Csf.Json?color=%23990099&style=flat-square)](https://www.nuget.org/packages/Shimakaze.Struct.Csf.Json/)
+![Nuget](https://img.shields.io/nuget/dt/Shimakaze.Struct.Csf.Json?style=flat-square)
 
 </div>
