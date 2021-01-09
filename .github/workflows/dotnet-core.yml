@@ -17,9 +17,15 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
-    - name: Install dependencies
-      run: dotnet restore ./src/
-    - name: Build
-      run: dotnet build --configuration Release --no-restore ./src/
+    - name: Install Shimakaze.Struct.Csf dependencies
+      run: dotnet restore ./src/Shimakaze.Struct.Csf/
+    - name: Build Shimakaze.Struct.Csf
+      run: dotnet build --configuration Release --no-restore ./src/Shimakaze.Struct.Csf/
+      
+    - name: Install Shimakaze.Struct.Csf.Json dependencies
+      run: dotnet restore ./src/Shimakaze.Struct.Csf.Json/
+    - name: Build Shimakaze.Struct.Csf.Json
+      run: dotnet build --configuration Release --no-restore ./src/Shimakaze.Struct.Csf.Json/
+      
 #    - name: Test
 #      run: dotnet test --no-restore --verbosity normal
