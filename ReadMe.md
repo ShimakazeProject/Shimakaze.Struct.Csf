@@ -1,3 +1,5 @@
+Move to [ShimakazeProject/Shimakaze.Models](//github.com/ShimakazeProject/Shimakaze.Models)
+
 <div align="center">
 
 # Shimakaze.Struct.Csf
